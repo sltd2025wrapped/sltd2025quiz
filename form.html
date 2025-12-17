@@ -10,7 +10,6 @@
       background-color: #4b000f; /* đỏ rượu */
       color: #f5e7c6; /* beige */
     }
-
     textarea {
       width: 100%;
       margin-top: 10px;
@@ -19,7 +18,6 @@
       font-size: 16px;
       background-color: #ffffffd8;
     }
-
     button {
       margin-top: 20px;
       padding: 12px 24px;
@@ -31,7 +29,6 @@
       cursor: pointer;
       border-radius: 6px;
     }
-
     button:hover {
       background-color: #e4d8bc;
     }
@@ -40,14 +37,34 @@
 <body>
 
 <h2>Chào mừng bạn đã đến với SLTĐ 2025's Wrapped!</h2>
-<p>Hãy đưa ra lựa chọn của bản thân nhé</p>
+<pp>Hãy điền đáp án bạn cảm thấy phù hợp nhất nhé.</p>
 
 <!-- FORM: gửi dữ liệu về email của bạn -->
-<form action="https://formspree.io/f/YOUR_FORM_ID_HERE" method="POST">
+<form action="https://formspree.io/f/mrbnnvwr" method="POST">
 
-  <p><strong>Best moment trong năm 2025 đối với bạn là gì?</strong></p>
+  <p><strong>1. Khoảnh khắc rung động nhất trong năm 2025?</strong></p>
+  <textarea name="q1_khoanh_khac_rung_dong" rows="4"></textarea>
 
-  <textarea name="best_moment" rows="6" placeholder="Câu trả lời của bạn"></textarea>
+  <p><strong>2. Artist của năm đối với bạn là ai?</strong></p>
+  <textarea name="q2_artist" rows="4"></textarea>
+
+  <p><strong>3. Writer của năm đối với bạn là ai?</strong></p>
+  <textarea name="q3_writer" rows="4"></textarea>
+
+  <p><strong>4. Editor của năm đối với bạn là ai?</strong></p>
+  <textarea name="q4_editor_1" rows="4"></textarea>
+
+  <p><strong>5. Bức fanart couple của năm đối với bạn là bức nào?</strong></p>
+  <textarea name="q5_fanart" rows="4"></textarea>
+
+  <p><strong>6. Fanfic của năm đối với bạn là fic nào?</strong></p>
+  <textarea name="q6_fanfic" rows="4"></textarea>
+
+  <p><strong>7. Màn tương tác online của năm đối với bạn?</strong></p>
+  <textarea name="q7_tuong_tac" rows="4"></textarea>
+
+  <p><strong>8. Editor của năm đối với bạn là ai? (bản 2)</strong></p>
+  <textarea name="q8_editor_2" rows="4"></textarea>
 
   <button type="submit">Gửi câu trả lời</button>
 </form>
