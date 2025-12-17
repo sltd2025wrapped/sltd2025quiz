@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Form chính</title>
+  <style>
+    body {
+      font-family: "Times New Roman", serif;
+      padding: 40px;
+      background-color: #4b000f; /* đỏ rượu */
+      color: #f5e7c6; /* beige */
+    }
+
+    textarea {
+      width: 100%;
+      margin-top: 10px;
+      padding: 10px;
+      font-family: "Times New Roman", serif;
+      font-size: 16px;
+      background-color: #ffffffd8;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 24px;
+      font-size: 16px;
+      font-family: "Times New Roman", serif;
+      background-color: #f5e7c6;
+      color: #4b000f;
+      border: none;
+      cursor: pointer;
+      border-radius: 6px;
+    }
+
+    button:hover {
+      background-color: #e4d8bc;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Chào mừng bạn đã đến với SLTĐ 2025's Wrapped!</h2>
+<p>Hãy đưa ra lựa chọn của bản thân nhé</p>
+
+<!-- FORM: gửi dữ liệu về email của bạn -->
+<form action="https://formspree.io/f/YOUR_FORM_ID_HERE" method="POST">
+
+  <p><strong>Best moment trong năm 2025 đối với bạn là gì?</strong></p>
+
+  <textarea name="best_moment" rows="6" placeholder="Câu trả lời của bạn"></textarea>
+
+  <button type="submit">Gửi câu trả lời</button>
+</form>
+
+</body>
+</html>

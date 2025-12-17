@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Access Check</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .box {
+      background: #1c1c1c;
+      padding: 30px;
+      border-radius: 8px;
+      width: 300px;
+      text-align: center;
+    }
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 12px;
+      border-radius: 4px;
+      border: none;
+    }
+    button {
+      background: #fff;
+      cursor: pointer;
+    }
+    .error {
+      color: #ff5c5c;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="box">
+  <h3>Mã số của năm là?</h3>
+  <input type="text" id="code" placeholder="Nhập mã số">
+  <button onclick="checkCode()">Tiếp tục</button>
+  <div class="error" id="error"></div>
+</div>
+
+<script>
+  function checkCode() {
+    const input = document.getElementById("code").value;
+    if (input === "3325") {
+      window.location.href = "form.html";
+    } else {
+      document.getElementById("error").innerText =
+        "Mã số không đúng. Bạn không thể tiếp tục.";
+    }
+  }
+</script>
+
+</body>
+</html>
