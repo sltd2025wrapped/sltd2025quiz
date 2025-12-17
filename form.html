@@ -70,21 +70,30 @@
 </form>
 
 <script>
-document.getElementById("wrappedForm").addEventListener("submit", async function(e) {
-    e.preventDefault(); // chặn submit mặc định
+document.getElementById('wrappedForm').addEventListener('submit', function(e) {
+  e.preventDefault();
 
-    const form = e.target;
-    const data = new FormData(form);
+  const formData = new FormData(this);
+  let jsonData = { data: {} };
 
-    await fetch("https://webhook.site/cdfbdc61-5422-4c0f-b359-303ba939633e", {
-        method: "POST",
-        body: data
-    });
+  formData.forEach((value, key) => {
+    jsonData.data[key] = value;
+  });
 
-    // chỉ redirect sau khi gửi xong
-    window.location.href = "thankyou.html";
+  fetch("https://sheetdb.io/api/v1/onrc9rpecq74p", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(jsonData)
+  })
+  .then(response => response.json())
+  .then(data => {
+    window.location.href = "thankyou.html"; // chuyển trang sau khi gửi
+  })
+  .catch(error => {
+    alert("Có lỗi xảy ra, thử lại nhé!");
+    console.error(error);
+  });
 });
 </script>
-
-</body>
-</html>
