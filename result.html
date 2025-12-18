@@ -2,122 +2,66 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KẾT QUẢ</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Kết quả</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Cinzel:wght@500;600&display=swap" rel="stylesheet">
 
 <style>
-body {
-  margin: 0;
-  min-height: 100vh;
-  background: radial-gradient(circle at top, #6a1627, #3b0813 75%);
-  font-family: "Playfair Display", serif;
-  color: #f5e7c6;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow-x: hidden;
+body{
+  margin:0;
+  min-height:100vh;
+  background:radial-gradient(circle at top,#6a1627,#3b0813 75%);
+  font-family:"Playfair Display",serif;
+  color:#f5e7c6;
+  display:flex;
+  justify-content:center;
+  align-items:center;
 }
-
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background-image:
-    radial-gradient(#f5e7c644 1px, transparent 1px),
-    radial-gradient(#f5e7c622 1px, transparent 1px);
-  background-size: 120px 120px, 200px 200px;
-  animation: sparkle 18s linear infinite;
-  pointer-events: none;
+.box{
+  width:min(92vw,700px);
+  background:rgba(30,5,10,.9);
+  padding:48px;
+  border-radius:26px;
 }
-
-@keyframes sparkle {
-  from { background-position: 0 0, 0 0; }
-  to { background-position: 900px 1200px, -1000px 600px; }
-}
-
-.box {
-  width: min(92vw, 700px);
-  background: rgba(30, 5, 10, 0.88);
-  border-radius: 26px;
-  padding: 46px 36px;
-  box-shadow: 0 0 70px rgba(245,231,198,0.15);
-}
-
-h1 {
-  font-family: "Cinzel", serif;
-  text-align: center;
-  font-size: 34px;
-  margin-bottom: 30px;
-}
-
-.result {
-  margin-bottom: 22px;
-  padding: 20px;
-  border-radius: 16px;
-}
-
-.correct { background: rgba(120, 200, 120, 0.15); }
-.wrong { background: rgba(200, 120, 120, 0.15); }
-
-button {
-  width: 100%;
-  margin-top: 30px;
-  padding: 18px;
-  font-size: 20px;
-  border-radius: 16px;
-  border: none;
-  cursor: pointer;
-  font-family: "Cinzel", serif;
-  background: linear-gradient(135deg, #f5e7c6, #d8c48f);
-  color: #3b0813;
+h1{text-align:center;font-family:"Cinzel",serif}
+.correct{color:#9dffb0}
+.wrong{color:#ffb3b3}
+button{
+  margin-top:30px;
+  width:100%;
+  padding:16px;
+  font-family:"Cinzel",serif;
+  border:none;
+  border-radius:14px;
+  cursor:pointer;
+  background:linear-gradient(135deg,#f5e7c6,#d8c48f);
 }
 </style>
 </head>
 
 <body>
 <div class="box">
-  <h1>KẾT QUẢ</h1>
-  <div id="results"></div>
-  <button onclick="goThank()">SUBMIT</button>
+<h1>KẾT QUẢ</h1>
+<div id="content"></div>
+<button onclick="location.href='thankyou.html'">TIẾP TỤC</button>
 </div>
 
 <script>
-const correct = {
-  q1: "A",
-  q2: "nhất"
-};
+const data = JSON.parse(localStorage.getItem("quizResult"));
+const c = document.getElementById("content");
 
-const explain = {
-  q1: "Hãy check lại các sự kiện bùng nổ của concert ATVNCG Day 6 nhé!",
-  q2: "Hãy check lại comment của anh Jun ở trên Youtube và Threads nhé!"
-};
+c.innerHTML = `
+<p><strong>Điểm:</strong> ${data.score}/2</p>
 
-const user = JSON.parse(localStorage.getItem("quizAnswers"));
-let html = "";
-let score = 0;
+<p class="${data.user.q1===data.correct.q1?'correct':'wrong'}">
+Câu 1: ${data.explain.q1}
+</p>
 
-if (user.q1 === correct.q1) {
-  score++;
-  html += `<div class="result correct">Đúng òi!<br>${explain.q1}</div>`;
-} else {
-  html += `<div class="result wrong">Sai òi!<br>${explain.q1}</div>`;
-}
-
-if (user.q2 === correct.q2) {
-  score++;
-  html += `<div class="result correct">Đúng òi!<br>${explain.q2}</div>`;
-} else {
-  html += `<div class="result wrong">Sai òi!<br>${explain.q2}</div>`;
-}
-
-html = `<p style="text-align:center;font-size:22px;">Điểm của bạn: <strong>${score}/2</strong></p>` + html;
-document.getElementById("results").innerHTML = html;
-
-function goThank() {
-  window.location.href = "thankyou.html";
-}
+<p class="${data.user.q2===data.correct.q2?'correct':'wrong'}">
+Câu 2: ${data.explain.q2}
+</p>
+`;
 </script>
 </body>
 </html>
