@@ -17,7 +17,23 @@ body{
   display:flex;
   justify-content:center;
   align-items:center;
+  overflow:hidden;
 }
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background-image:
+    radial-gradient(#f5e7c644 1px,transparent 1px),
+    radial-gradient(#f5e7c622 1px,transparent 1px);
+  background-size:120px 120px,200px 200px;
+  animation:sparkle 20s linear infinite;
+  pointer-events:none;
+}
+@keyframes sparkle{
+  to{background-position:800px 1400px,-1000px 600px;}
+}
+
 .box{
   width:min(92vw,680px);
   background:rgba(30,5,10,.88);
@@ -25,15 +41,23 @@ body{
   border-radius:26px;
   text-align:center;
 }
-.score{font-size:56px;margin-bottom:20px;}
-.explain{text-align:left;font-size:18px;}
+.score{
+  font-size:56px;
+  margin-bottom:20px;
+}
+.explain{
+  margin-top:20px;
+  font-size:18px;
+  opacity:.9;
+}
 button{
   margin-top:30px;
-  padding:16px 30px;
-  font-size:20px;
+  padding:14px 26px;
+  font-size:18px;
   border:none;
-  border-radius:16px;
+  border-radius:14px;
   background:linear-gradient(135deg,#f5e7c6,#d8c48f);
+  font-family:"Playfair Display",serif;
   cursor:pointer;
 }
 </style>
@@ -41,27 +65,25 @@ button{
 
 <body>
 <div class="box">
-<h1>KẾT QUẢ</h1>
-<div class="score" id="score"></div>
-<div class="explain" id="explain"></div>
-<button onclick="go()">SUBMIT</button>
+  <h1>KẾT QUẢ</h1>
+  <div class="score" id="score"></div>
+  <div id="explain"></div>
+  <button onclick="location.href='thankyou.html'">SUBMIT</button>
 </div>
 
 <script>
-const a=JSON.parse(localStorage.getItem("quizAnswers")||"{}");
-let s=0,html="";
+const data=JSON.parse(localStorage.getItem("quizAnswers")||"{}");
+let score=0;
+let explain="";
 
-if(a.q1==="A"){s++;}else{
-html+="<p>❌ Câu 1 sai – đáp án đúng: <strong>A. 3325</strong>. Vui lòng check lại sự kiện bùng nổ tại concert ATVNCG Day 6 nhé!</p>";
-}
-if(a.q2==="nhất"){s++;}else{
-html+="<p>❌ Câu 2 sai – đáp án đúng: <strong>nhất</strong>. Vui lòng check lại comment của anh Jun trên YouTube và Threads nhé!</p>";
-}
+if(data.q1==="A"){ score++; }
+else explain+="❌ Câu 1 đúng là <strong>A. 3325</strong>. Hãy check lại sự kiện bùng nổ tại concert ATVNCG Day 6 nhé!<br>";
 
-document.getElementById("score").innerText=s+"/2";
-document.getElementById("explain").innerHTML=html||"<p>✨ Xinh lời con này giỏi quá!</p>";
+if(data.q2==="nhất"){ score++; }
+else explain+="❌ Câu 2 đáp án là <strong>nhất</strong>. Hãy check lại comment của anh Jun trên YouTube và Threads nhé!<br>";
 
-function go(){window.location.href="thankyou.html";}
+document.getElementById("score").innerText=score+"/2";
+document.getElementById("explain").innerHTML=explain||"<div class='explain'>🎉 Xinh lời con này giỏi quá!</div>";
 </script>
 </body>
 </html>
