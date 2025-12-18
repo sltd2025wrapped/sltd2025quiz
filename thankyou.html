@@ -1,98 +1,50 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Thank You</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thank You</title>
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Cinzel:wght@500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter&display=swap" rel="stylesheet">
 
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      background: radial-gradient(circle at top, #6a1627, #3b0813 75%);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: "Playfair Display", serif;
-      color: #f5e7c6;
-      text-align: center;
-      overflow: hidden;
-    }
-
-    /* Sparkle animation */
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background-image:
-        radial-gradient(#f5e7c644 1px, transparent 1px),
-        radial-gradient(#f5e7c622 1px, transparent 1px);
-      background-size: 140px 140px, 220px 220px;
-      animation: sparkle 22s linear infinite;
-      pointer-events: none;
-    }
-
-    @keyframes sparkle {
-      from { background-position: 0 0, 0 0; }
-      to { background-position: 900px 1500px, -1100px 700px; }
-    }
-
-    .box {
-      background: rgba(30, 5, 10, 0.88);
-      padding: 60px 40px;
-      border-radius: 28px;
-      box-shadow: 0 0 80px rgba(245,231,198,0.18);
-      width: min(92vw, 520px);
-      animation: fadeUp 1s ease;
-    }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    h1 {
-      font-family: "Cinzel", serif;
-      font-size: 38px;
-      margin-bottom: 20px;
-      letter-spacing: 1px;
-    }
-
-    p {
-      font-size: 20px;
-      margin-bottom: 36px;
-      opacity: 0.95;
-    }
-
-    a.button {
-      display: inline-block;
-      padding: 16px 34px;
-      font-size: 18px;
-      font-family: "Cinzel", serif;
-      border-radius: 16px;
-      text-decoration: none;
-      background: linear-gradient(135deg, #f5e7c6, #d8c48f);
-      color: #3b0813;
-      transition: all 0.3s ease;
-    }
-
-    a.button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 14px 34px rgba(245,231,198,0.35);
-    }
-  </style>
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: radial-gradient(circle at top, #7a1e2e, #4b000f 75%);
+  font-family: "Inter", sans-serif;
+  color: #f5e7c6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.box {
+  text-align: center;
+}
+h1 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 48px;
+}
+p {
+  font-size: 20px;
+}
+a {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 14px 26px;
+  background: linear-gradient(135deg, #f5e7c6, #d8c48f);
+  color: #4b000f;
+  text-decoration: none;
+  border-radius: 14px;
+}
+</style>
 </head>
 
 <body>
 <div class="box">
-<h2>CẢM ƠN BẠN VÌ ĐÃ KHÔNG LUNG LAY!</h2>
-<p>Bạn đã đi hết hành trình Song Lời Tự Định 2025.</p>
-
-    <!-- QUAY LẠI TRANG ĐẦU -->
-    <a href="index.html" class="button">QUAY LẠI TRANG ĐẦU</a>
-  </div>
+<h1>Cảm ơn bạn vì đã không lung lay!</h1>
+<p>Bạn đã đi hết chặng đường của Song Lời Tự Định 2025.<p>
+<a href="index.html">QUAY LẠI TRANG ĐẦU</a>
+</div>
 </body>
 </html>
