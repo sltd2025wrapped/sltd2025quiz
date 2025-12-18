@@ -1,87 +1,138 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mật mã truy cập</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mật mã truy cập</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <!-- FONT -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 
-<style>
-body{
-  margin:0;
-  height:100vh;
-  background:radial-gradient(circle at top,#6a1627,#3b0813 75%);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  font-family:"Playfair Display",serif;
-  color:#f5e7c6;
-  overflow:hidden;
-}
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  background-image:
-    radial-gradient(#f5e7c644 1px,transparent 1px),
-    radial-gradient(#f5e7c622 1px,transparent 1px);
-  background-size:120px 120px,200px 200px;
-  animation:sparkle 20s linear infinite;
-}
-@keyframes sparkle{
-  to{background-position:800px 1400px,-1000px 600px;}
-}
-.box{
-  background:rgba(30,5,10,.88);
-  padding:48px 36px;
-  border-radius:24px;
-  width:min(92vw,420px);
-  text-align:center;
-}
-h1{font-size:30px;margin-bottom:8px;}
-.hint{font-size:15px;opacity:.85;margin-bottom:22px;}
-input{
-  width:100%;
-  padding:16px;
-  border-radius:14px;
-  border:none;
-  text-align:center;
-  font-size:18px;
-  font-family:"Playfair Display",serif;
-}
-button{
-  margin-top:20px;
-  width:100%;
-  padding:16px;
-  font-size:20px;
-  border:none;
-  border-radius:14px;
-  background:linear-gradient(135deg,#f5e7c6,#d8c48f);
-  cursor:pointer;
-}
-.error{margin-top:14px;color:#ffb3b3;font-size:15px;}
-</style>
+  <style>
+    * { box-sizing: border-box; }
+
+    body{
+      margin:0;
+      min-height:100vh;
+      background: radial-gradient(circle at top, #7a1c2e, #3b0813 75%);
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      font-family:"Playfair Display", serif;
+      color:#f5e7c6;
+      overflow:hidden;
+    }
+
+    /* Sparkle nền – KHÔNG chặn click */
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      background-image:
+        radial-gradient(#f5e7c644 1px,transparent 1px),
+        radial-gradient(#f5e7c622 1px,transparent 1px);
+      background-size:120px 120px,200px 200px;
+      animation:sparkle 20s linear infinite;
+      pointer-events:none;
+      z-index:0;
+    }
+
+    @keyframes sparkle{
+      from { background-position: 0 0, 0 0; }
+      to   { background-position: 800px 1400px, -1000px 600px; }
+    }
+
+    .box{
+      position:relative;
+      z-index:1;
+      width:min(92vw, 460px);
+      background:rgba(30,5,10,.88);
+      padding:50px 38px;
+      border-radius:26px;
+      text-align:center;
+      box-shadow:0 0 70px rgba(245,231,198,0.15);
+      animation:fadeUp 1s ease;
+    }
+
+    @keyframes fadeUp{
+      from{opacity:0; transform:translateY(20px);}
+      to{opacity:1; transform:translateY(0);}
+    }
+
+    h1{
+      font-size:32px;
+      margin-bottom:10px;
+      letter-spacing:.5px;
+    }
+
+    .hint{
+      font-size:15px;
+      opacity:.85;
+      margin-bottom:26px;
+    }
+
+    input{
+      width:100%;
+      padding:18px;
+      font-size:18px;
+      border-radius:16px;
+      border:none;
+      outline:none;
+      text-align:center;
+      font-family:"Playfair Display", serif;
+    }
+
+    button{
+      margin-top:22px;
+      width:100%;
+      padding:18px;
+      font-size:20px;
+      border:none;
+      border-radius:16px;
+      cursor:pointer;
+      font-family:"Playfair Display", serif; /* SUBMIT cũng Playfair */
+      background:linear-gradient(135deg,#f5e7c6,#d8c48f);
+      color:#3b0813;
+      transition:.3s;
+    }
+
+    button:hover{
+      transform:translateY(-2px);
+      box-shadow:0 12px 30px rgba(245,231,198,.35);
+    }
+
+    .error{
+      margin-top:16px;
+      min-height:20px;
+      color:#ffb3b3;
+      font-size:15px;
+    }
+  </style>
 </head>
 
 <body>
-<div class="box">
-  <h1>MẬT MÃ TRUY CẬP</h1>
-  <div class="hint">Hint: 4 chữ số</div>
-  <input id="code" placeholder="....">
-  <button onclick="check()">SUBMIT</button>
-  <div class="error" id="err"></div>
-</div>
+  <div class="box">
+    <h1>MẬT MÃ TRUY CẬP</h1>
+    <div class="hint">Hint: 4 chữ số</div>
 
-<script>
-function check(){
-  const v=document.getElementById("code").value.trim();
-  if(v==="8992"){
-    window.location.href="form.html";
-  }else{
-    document.getElementById("err").innerText="Mật mã chưa đúng! Vui lòng thử lại.";
-  }
-}
-</script>
+    <input id="code" type="text" placeholder="••••">
+
+    <button type="button" onclick="checkCode()">SUBMIT</button>
+
+    <div class="error" id="error"></div>
+  </div>
+
+  <script>
+    function checkCode(){
+      const value = document.getElementById("code").value.trim();
+      const error = document.getElementById("error");
+
+      if(value === "8992"){
+        window.location.href = "form.html";
+      }else{
+        error.textContent = "Mật mã chưa đúng. Vui lòng thử lại.";
+      }
+    }
+  </script>
 </body>
 </html>
